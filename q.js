@@ -1,3 +1,4 @@
+﻿/*! q.js v1.4 | Fork from https://github.com/kriskowal/q with fixes | Url https://github.com/flamencist/q */
 // vim:ts=4:sts=4:sw=4:
 /*!
  *
@@ -301,7 +302,7 @@ var isFuncNative = function isFuncNative(f) {
 var array_slice = uncurryThis(Array.prototype.slice);
 
 var array_reduce = uncurryThis(
-    Array.prototype.reduce || function (callback, basis) {
+    Array.prototype.reduce && isFuncNative(Array.prototype.reduce)? Array.prototype.reduce : function (callback, basis) {
         var index = 0,
             length = this.length;
         // concerning the initial value, if one is not provided
@@ -330,7 +331,7 @@ var array_reduce = uncurryThis(
 );
 
 var array_indexOf = uncurryThis(
-    Array.prototype.indexOf || function (value) {
+    Array.prototype.indexOf  && isFuncNative(Array.prototype.indexOf)? Array.prototype.indexOf : function (value) {
         // not a very good shim, but good enough for our one use of it
         for (var i = 0; i < this.length; i++) {
             if (this[i] === value) {
@@ -342,7 +343,7 @@ var array_indexOf = uncurryThis(
 );
 
 var array_map = uncurryThis(
-    Array.prototype.map || function (callback, thisp) {
+    Array.prototype.map  && isFuncNative(Array.prototype.map)? Array.prototype.map : function (callback, thisp) {
         var self = this;
         var collect = [];
         array_reduce(self, function (undefined, value, index) {
@@ -361,7 +362,7 @@ var object_create = Object.create && isFuncNative(Object.create)? Object.create 
 
 var object_hasOwnProperty = uncurryThis(Object.prototype.hasOwnProperty);
 
-var object_keys = Object.keys || function (object) {
+var object_keys = Object.keys  && isFuncNative(Object.keys)? Object.keys  : function (object) {
     var keys = [];
     for (var key in object) {
         if (object_hasOwnProperty(object, key)) {
