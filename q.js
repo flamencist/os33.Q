@@ -290,6 +290,14 @@ function uncurryThis(f) {
 // uncurryThis = Function_bind.bind(Function_bind.call);
 // http://jsperf.com/uncurrythis
 
+// FIX check: is native method
+//http://stackoverflow.com/questions/6598945/detect-if-function-is-native-to-browser
+var isFuncNative = function isFuncNative(f) {
+    return !!f && (typeof f).toLowerCase() === "function" 
+    && (f === Function.prototype 
+    || /^\s*function\s*(\b[a-z$_][a-z0-9$_]*\b)*\s*\((|([a-z$_][a-z0-9$_]*)(\s*,[a-z$_][a-z0-9$_]*)*)\)\s*{\s*\[native code\]\s*}\s*$/i.test(String(f)));
+};
+
 var array_slice = uncurryThis(Array.prototype.slice);
 
 var array_reduce = uncurryThis(
@@ -344,7 +352,8 @@ var array_map = uncurryThis(
     }
 );
 
-var object_create = Object.create || function (prototype) {
+//FIX https://github.com/kriskowal/q/issues/752
+var object_create = Object.create && isFuncNative(Object.create)? Object.create : function (prototype) {
     function Type() { }
     Type.prototype = prototype;
     return new Type();
