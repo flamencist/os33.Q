@@ -34,6 +34,7 @@
     // Common/Node/RequireJS, the module exports the Q API and when
     // executed as a simple <script>, it creates a Q global instead.
 
+/* ================== FIX FOR IE
     // Montage Require
     if (typeof bootstrap === "function") {
         bootstrap("promise", definition);
@@ -55,7 +56,9 @@
         }
 
     // <script>
-    } else if (typeof window !== "undefined" || typeof self !== "undefined") {
+    } else
+   */ 
+    if (typeof window !== "undefined" || typeof self !== "undefined") {
         // Prefer window over self for add-on scripts. Use self for
         // non-windowed contexts.
         var global = typeof window !== "undefined" ? window : self;
