@@ -3,7 +3,7 @@ npm-debug.log
 CHANGES.html
 README.html
 .tmp
-q.min.js
+# not ignore q.min.js
 
 coverage/
 
