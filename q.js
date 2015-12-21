@@ -57,7 +57,7 @@
 
     // <script>
     } else
-   */ 
+   
     if (typeof window !== "undefined" || typeof self !== "undefined") {
         // Prefer window over self for add-on scripts. Use self for
         // non-windowed contexts.
@@ -78,7 +78,27 @@
     } else {
         throw new Error("This environment was not anticipated by Q. Please file a bug.");
     }
+================================== */ 
+    if("undefined"==typeof window){
+        throw new Error("This environment was not anticipated by Q. Please file a bug.");
+    }else{
+     // Prefer window over self for add-on scripts. Use self for
+        // non-windowed contexts.
+        var global = window;
 
+        // Get the `window` object, save the previous Q global
+        // and initialize Q as a global.
+        var previousQ = global.Q;
+        global.Q = definition();
+
+        // Add a noConflict function so Q can be removed from the
+        // global namespace.
+        global.Q.noConflict = function () {
+            global.Q = previousQ;
+            return this;
+        };
+    }
+// ============================================================
 })(function () {
 "use strict";
 
