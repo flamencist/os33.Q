@@ -2890,9 +2890,3 @@ describe("unhandled rejection reporting", function () {
         expect(Q.getUnhandledReasons()).toEqual([]);
     });
 });
-
-describe("use only native functions", function () {
-it("not use overrided object.create method", function () {
-//todo create test
-});
-});
