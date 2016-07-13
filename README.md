@@ -8,6 +8,8 @@
 Fork famous library: q.js.
 This fork resolved conflict mootools vs q.js: https://github.com/kriskowal/q/issues/752.
 
+Q moved to os33 namespace.
+
 *This is Q version 1, from the `v1` branch in Git. This documentation applies to
 the latest of both the version 1 and version 0.9 release trains. These releases
 are stable. There will be no further releases of 0.9 after 0.9.7 which is nearly
