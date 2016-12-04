@@ -2531,11 +2531,15 @@ describe("browser support", function () {
     var _Q;
 
     beforeEach(function() {
-        _Q = Q;
+        _Q = window.os33 ? window.os33.Q : Q;
     });
 
     afterEach(function() {
-        Q = _Q;
+	if(window.os33){
+	    window.os33.Q = _Q;
+	}else{
+		Q = _Q;
+	}
     });
 
     it("sets the global Q object to its original value", function() {
@@ -2544,7 +2548,11 @@ describe("browser support", function () {
             // assert that Q.noConflict returns window.Q to it's initial value
             // In this context the original value of Q is undefined
             Q.noConflict();
-            expect(Q).toEqual(undefined);
+	   if(window.os33.Q){
+	   	expect(os33.Q).toEqual(undefined);
+	   }else{
+	   	expect(Q).toEqual(undefined);
+	   }           
         }
     });
 
