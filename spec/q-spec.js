@@ -1,9 +1,11 @@
 "use strict";
 /*jshint newcap: false*/
-/*global Q: true, describe: false, it: false, expect: false, beforeEach: false,
+/*global Q: true, os33: true, describe: false, it: false, expect: false, beforeEach: false,
          afterEach: false, require: false, jasmine: false, waitsFor: false,
          runs: false */
-
+if(os33 && os33.Q && !Q){
+	Q = os33.Q;
+}
 if (typeof Q === "undefined" && typeof require !== "undefined") {
     // For Node compatibility.
     global.Q = require("../q");
