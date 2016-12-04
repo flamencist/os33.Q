@@ -877,7 +877,7 @@ to many users, you should probably keep it off. But in development, go for it!
 
 You can view the results of the Q test suite [in your browser][tests]!
 
-[tests]: https://rawgithub.com/flamencist/q/v1/spec/q-spec.html
+[tests]: https://rawgit.com/flamencist/q/v1/spec/q-spec.html
 
 ## License
 
