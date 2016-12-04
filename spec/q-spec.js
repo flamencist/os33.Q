@@ -3,8 +3,8 @@
 /*global Q: true, os33: true, describe: false, it: false, expect: false, beforeEach: false,
          afterEach: false, require: false, jasmine: false, waitsFor: false,
          runs: false */
-if(os33 && os33.Q && !Q){
-	Q = os33.Q;
+if(window.os33 && window.os33.Q && !window.Q){
+	window.Q = window.os33.Q;
 }
 if (typeof Q === "undefined" && typeof require !== "undefined") {
     // For Node compatibility.
