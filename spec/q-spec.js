@@ -2548,7 +2548,7 @@ describe("browser support", function () {
             // assert that Q.noConflict returns window.Q to it's initial value
             // In this context the original value of Q is undefined
             Q.noConflict();
-	   if(window.os33.Q){
+	   if(window.os33){
 	   	expect(os33.Q).toEqual(undefined);
 	   }else{
 	   	expect(Q).toEqual(undefined);
