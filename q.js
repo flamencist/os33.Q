@@ -179,7 +179,7 @@ var nextTick =(function () {
     } else if (typeof setImmediate === "function") {
         // In IE10, Node.js 0.9+, or https://github.com/NobleJS/setImmediate
         if (typeof window !== "undefined") {
-            requestTick = setImmediate.bind(window, flush);
+            requestTick = setImmediate.bind(null, flush);
         } else {
             requestTick = function () {
                 setImmediate(flush);
